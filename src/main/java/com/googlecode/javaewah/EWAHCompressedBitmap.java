@@ -1942,6 +1942,24 @@ public final class EWAHCompressedBitmap implements Cloneable, Externalizable,
     }
 
     /**
+     * Return a bitmap with the bit set to true at the given positions. The
+     * positions should be given in sorted order.
+     *
+     * (This is a convenience method.)
+     *
+     * @param length length of list of set bits
+     * @param setBits list of set bit positions
+     * @return the bitmap
+     * @since 1.1.6-CUSTOM
+     */
+    public static EWAHCompressedBitmap bitmapOf(int length, int[] setBits) {
+        EWAHCompressedBitmap a = new EWAHCompressedBitmap();
+        for (int k = 0; k < length; k++)
+            a.set(setBits[k]);
+        return a;
+    }
+
+    /**
      * Uses an adaptive technique to compute the logical OR. Mostly for
      * internal use.
      * 
